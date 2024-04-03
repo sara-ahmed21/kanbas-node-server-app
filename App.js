@@ -1,7 +1,7 @@
 
 import express from "express";
 import Lab5 from './Lab5.js';
-import CourseRoutes from "./Kanbas/courses/routes.js";
+import CourseRoutes from "./Kanbas/Courses/routes.js";
 import ModuleRoutes from "./Kanbas/Modules/routes.js";
 import cors from "cors";
 const app = express();
