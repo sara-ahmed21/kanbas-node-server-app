@@ -7,12 +7,44 @@ const todos = [
 
 
 const assignment = {
-  id: 1, title: "NodeJS Assignment",
+  id: 1, 
+  title: "NodeJS Assignment",
   description: "Create a NodeJS server with ExpressJS",
-  due: "2021-10-10", completed: false, score: 0,
+  due: "2021-10-10", 
+  completed: false, score: 0,
+};
+
+const module= {
+  id: 2, 
+  title: "Web Development",
+  description: "web dev",
+  course: "CS4550"
 };
 
 const Lab5 = (app) => {
+
+  app.get("/a5/calculator", (req, res) => {
+    const { a, b, operation } = req.query;
+    let result = 0;
+    switch (operation) {
+      case "add":
+        result = parseInt(a) + parseInt(b);
+        break;
+      case "subtract":
+        result = parseInt(a) - parseInt(b);
+        break;
+      case "multiply": 
+        result = parseInt(a) * parseInt(b);
+        break;
+      case "divide": 
+        result = parseInt(a) / parseInt(b);
+        break;
+      default:
+        result = "Invalid operation";
+    }
+    res.send(result.toString());
+  });
+
 
   app.post("/a5/todos", (req, res) => {
     const newTodo = {
@@ -49,7 +81,6 @@ const Lab5 = (app) => {
     const todo = todos.find((t) => t.id === parseInt(id));
     res.json(todo);
   });
-
 
 
   app.get("/a5/todos/:id/title/:title", (req, res) => {
@@ -126,6 +157,26 @@ const Lab5 = (app) => {
     res.sendStatus(200);
   });
 
+  app.get("/a5/module", (req, res) => {
+    res.json(module);
+  });
+
+  app.get("/a5/module/title", (req, res) => {
+    res.json(module.title);
+  });
+
+
+  app.get("/a5/module/title/:newTitle", (req, res) => {
+    const {newTitle} = req.params;
+    module.title = newTitle;
+    res.json(module);
+  });
+
+  app.get("/a5/module/description/:newDescription",(req, res) => {
+    const {newDescription} = req.params;
+    module.description = newDescription;
+    res.json(module);
+  });
 
 };
 export default Lab5;
