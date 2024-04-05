@@ -23,6 +23,32 @@ const module= {
 
 const Lab5 = (app) => {
 
+  app.get("/a5/welcome", (req, res) => {
+    res.send("Welcome to Assignment 5");
+  });
+  app.get("/a5/add/:a/:b", (req, res) => {
+    const { a, b } = req.params;
+    const sum = parseInt(a) + parseInt(b);
+    res.send(sum.toString());
+  });
+  app.get("/a5/subtract/:a/:b", (req, res) => {
+    const { a, b } = req.params;
+    const sum = parseInt(a) - parseInt(b);
+    res.send(sum.toString());
+  });
+  app.get("/a5/multiply/:a/:b", (req, res) => {
+    const { a, b } = req.params;
+    const sum = parseInt(a) * parseInt(b);
+    res.send(sum.toString());
+  });
+  app.get("/a5/divide/:a/:b", (req, res) => {
+    const { a, b } = req.params;
+    const sum = parseInt(a) / parseInt(b);
+    res.send(sum.toString());
+  });
+
+
+  //calc 
   app.get("/a5/calculator", (req, res) => {
     const { a, b, operation } = req.query;
     let result = 0;
@@ -46,6 +72,7 @@ const Lab5 = (app) => {
   });
 
 
+  //arrays 
   app.post("/a5/todos", (req, res) => {
     const newTodo = {
       ...req.body,
@@ -106,6 +133,7 @@ const Lab5 = (app) => {
 
 
 
+//object
   app.get("/a5/assignment", (req, res) => {
     res.json(assignment);
   });
@@ -119,32 +147,6 @@ const Lab5 = (app) => {
   });
   app.get("/a5/assignment/title", (req, res) => {
     res.json(module);
-  });
-
-  
-
-  app.get("/a5/welcome", (req, res) => {
-    res.send("Welcome to Assignment 5");
-  });
-  app.get("/a5/add/:a/:b", (req, res) => {
-    const { a, b } = req.params;
-    const sum = parseInt(a) + parseInt(b);
-    res.send(sum.toString());
-  });
-  app.get("/a5/subtract/:a/:b", (req, res) => {
-    const { a, b } = req.params;
-    const sum = parseInt(a) - parseInt(b);
-    res.send(sum.toString());
-  });
-  app.get("/a5/multiply/:a/:b", (req, res) => {
-    const { a, b } = req.params;
-    const sum = parseInt(a) * parseInt(b);
-    res.send(sum.toString());
-  });
-  app.get("/a5/divide/:a/:b", (req, res) => {
-    const { a, b } = req.params;
-    const sum = parseInt(a) / parseInt(b);
-    res.send(sum.toString());
   });
 
   app.put("/a5/todos/:id", (req, res) => {
